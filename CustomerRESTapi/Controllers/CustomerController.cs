@@ -108,17 +108,7 @@ namespace CustomerRESTapi.Controllers
             HttpResponseMessage response = await client.PostAsJsonAsync("https://localhost:7005/api/Customer/CreateCustomer", newCustomers);
             response.EnsureSuccessStatusCode(); // Throw if not a success code
         }
-        [NonAction]
-        public async Task SendGetRequest(HttpClient client)
-        {
-            HttpResponseMessage response = await client.GetAsync("api/customers");
-            response.EnsureSuccessStatusCode(); // Throw if not a success code
-            List<CustomerDTO> customers = customersData;
-            foreach (var customer in customers)
-            {
-                Console.WriteLine($"{customer.firstName} {customer.lastName}, Age: {customer.age}, ID: {customer.customerId}");
-            }
-        }
+        
         [NonAction]
         public ResponseModel<List<CustomerDTO>> CustomerResponse(bool IsSuccess, string ReturnDescription, List<CustomerDTO>? customers)
         {
